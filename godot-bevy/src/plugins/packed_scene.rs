@@ -341,16 +341,7 @@ fn spawn_scene(
                 parent.add_child(&instance);
             }
             None => {
-                scene_tree
-                    .get()
-                    .get_root()
-                    .with_context(|| {
-                        format!(
-                            "failed to find scene tree root for scene {:?} on entity {ent}",
-                            scene.resource
-                        )
-                    })?
-                    .add_child(&instance);
+                scene_tree.get().get_root().add_child(&instance);
             }
         }
 

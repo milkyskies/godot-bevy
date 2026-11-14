@@ -711,9 +711,7 @@ fn resolve(world: &World, params: &Wire) -> Result<Wire, RpcError> {
         .get_main_loop()
         .and_then(|node| node.try_cast::<SceneTree>().ok())
         .ok_or(InspectionError("scene tree unavailable"))?;
-    let root = tree
-        .get_root()
-        .ok_or(InspectionError("scene tree unavailable"))?;
+    let root = tree.get_root();
     let index = world
         .get_resource::<NodeEntityIndex>()
         .ok_or(InspectionError("node index unavailable"))?;
